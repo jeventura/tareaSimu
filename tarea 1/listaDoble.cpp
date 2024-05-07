@@ -102,7 +102,35 @@ void eliminarAlFrente(Nodo **head) {
     // Liberar la memoria del nodo eliminado
     delete nodoAEliminar;
 }
-
+void eliminarAlFinal(Nodo **head) {
+    // Verificar si la lista está vacía
+    if (*head == nullptr) {
+        cout << "La lista está vacía. No hay nada que eliminar." << endl;
+        return;
+    }
+    
+    // Si la lista tiene solo un nodo, eliminamos ese nodo
+    if ((*head)->Siguiente == nullptr) {
+        delete *head;
+        *head = nullptr;
+        return;
+    }
+    
+    // Encontrar el último nodo
+    Nodo *ultimo = *head;
+    while (ultimo->Siguiente != nullptr) {
+        ultimo = ultimo->Siguiente;
+    }
+    
+    // Guardar una referencia al nodo que será eliminado (el último nodo)
+    Nodo *nodoAEliminar = ultimo;
+    
+    // Actualizar el nodo anterior al último
+    ultimo->Anterior->Siguiente = nullptr;
+    
+    // Liberar la memoria del nodo eliminado
+    delete nodoAEliminar;
+}
 
 int main()
 {
@@ -145,7 +173,6 @@ int main()
 
     return 0;
     */
-eliminarEnPosicion(&head, 1); // Eliminar el nodo en la posición 2
 imprimirLista(head);
 
 
