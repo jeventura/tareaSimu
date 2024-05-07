@@ -18,8 +18,7 @@ void imprimirLista(Nodo *n)
     }
 }
 
-void insertarAlFrente(Nodo **head, int nuevoValor)
-{
+void insertarAlFrente(Nodo **head, int nuevoValor){
     // pasos para insertar nuevo valor al frente de la lista
     //  1- Preparar un nuevo nodo
     Nodo *nuevoNodo = new Nodo();
@@ -82,6 +81,29 @@ void insertarEnPosicion(Nodo *anterior, int nuevoValor)
     anterior->Siguiente = nuevoNodo;
 }
 
+void eliminarAlFrente(Nodo **head) {
+    // Verificar si la lista está vacía
+    if (*head == nullptr) {
+        cout << "La lista está vacía. No hay nada que eliminar." << endl;
+        return;
+    }
+    
+    // Guardar una referencia al nodo que será eliminado (el head actual)
+    Nodo *nodoAEliminar = *head;
+    
+    // Mover la cabeza al siguiente nodo en la lista
+    *head = (*head)->Siguiente;
+    
+    // Verificar si hay un nuevo head y ajustar su puntero anterior
+    if (*head != nullptr) {
+        (*head)->Anterior = nullptr;
+    }
+    
+    // Liberar la memoria del nodo eliminado
+    delete nodoAEliminar;
+}
+
+
 int main()
 {
     Nodo *head = nullptr;
@@ -91,7 +113,7 @@ int main()
     insertarAlFrente(&head, 1);
 
     insertarAlFinal(&head, 4);
-
+/*
     Nodo *nodoActual = head;
     while (nodoActual != nullptr && nodoActual->Valor != 3)
     {
@@ -103,7 +125,9 @@ int main()
     }
 
     cout << "Lista hacia adelante:" << endl;
-    imprimirLista(head);
+    */
+    //imprimirLista(head);
+    /*
     cout << "Lista hacia atras:" << endl;
     Nodo *ultimo = head;
 
@@ -120,4 +144,9 @@ int main()
     }
 
     return 0;
+    */
+eliminarEnPosicion(&head, 1); // Eliminar el nodo en la posición 2
+imprimirLista(head);
+
+
 }

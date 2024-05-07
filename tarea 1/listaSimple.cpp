@@ -5,7 +5,7 @@ class Nodo{
 public:
     int Valor;
     Nodo* Siguiente;
-
+    Nodo* Anterior;
 };
 
 void imprimirLista(Nodo* n){
